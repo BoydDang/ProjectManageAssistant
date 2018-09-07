@@ -1,0 +1,81 @@
+﻿@model ProjectManageAssistant.Models.ViewModel.ViewModelUserInfo
+@{
+    Layout = null;
+
+    var options = new AjaxOptions()
+    {
+        Url = Url.Action("Login", "Account"),
+        OnSuccess = "LoginSuccess",
+        HttpMethod = "post",
+        LoadingElementId = "logining",
+        LoadingElementDuration = 2000
+    };
+}
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <meta name="viewport" content="width=device-width" />
+    <title>Login In</title>
+    <script type="text/javascript" src="~/Scripts/jquery-1.10.2.min.js"></script>
+
+    <style type="text/css">
+        .form-control {
+            display: block;
+            width: 100%;
+            padding: 0.375rem 0.75rem;
+            font-size: 1rem;
+            line-height: 1.5;
+            color: #292b2c;
+            background-color: #ffffff;
+            background-clip: padding-box;
+            border: 1px solid rgba(33, 37, 41, 0.15);
+            border-radius: 0.25rem;
+            transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+        }
+    </style>
+
+    <script type="text/javascript">
+        function LoginSuccess(data) {
+            if (data == "success") {
+                alert('保存成功！');
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="login-backround-color">
+        <div style=" text-align:center; line-height:10px; margin-top:200px;">
+            <h1 style=" vertical-align:middle;">项目云,  您身边专业的项目管理助手。</h1>
+        </div>
+        <div>
+            <center>
+                @using (Ajax.BeginForm("Login", null, options, new { role = "form" }))
+                {
+                    @Html.ValidationSummary(true)
+                    @Html.AntiForgeryToken()
+                    @Html.HiddenFor(model => model.UserID)
+                    <div style=" text-align:center;  margin-right:0 auto; line-height: 1.5; margin-top:20px; width:200px;">
+                        @*@Html.LabelFor(model => model.UserName)*@
+                        @Html.TextBoxFor(model => model.UserName, new { @class = "form-control", @placeholder = "用户名" })
+                    </div>
+
+                    <div style=" text-align:center; line-height:1.5; margin-top:20px; width:200px;">
+                        @*@Html.LabelFor(model => model.UserPassword)*@
+                        @Html.TextBoxFor(model => model.UserPassword, new { @class = "form-control", @placeholder = "密码" })
+                    </div>
+                    <div style=" text-align:center; line-height:1.5; margin-top:20px;">
+                        @Html.CheckBoxFor(model => model.RememberMe, new { })
+                        @Html.LabelFor(model => model.RememberMe)
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        @Html.ActionLink("忘记密码", "ForgetPassword", null, new { })
+                    </div>
+                    <div style=" text-align:center; line-height:10px; margin-top:20px;">
+                        <input type="submit" value="登陆" />
+                    </div>
+                }
+            </center>
+        </div>
+    </div>
+</body>
+</html>

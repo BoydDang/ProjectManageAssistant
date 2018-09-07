@@ -1,0 +1,274 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+    <!-- Required Stylesheets -->
+    <link rel="stylesheet" type="text/css" href="~/Content/LayoutMasterPage/reset.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="~/Content/LayoutMasterPage/text.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="~/Content/LayoutMasterPage/fonts/ptsans/stylesheet.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="~/Content/LayoutMasterPage/fluid.css" media="screen" />
+
+    <link rel="stylesheet" type="text/css" href="~/Content/LayoutMasterPage/mws.style.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="~/Content/LayoutMasterPage/icons/icons.css" media="screen" />
+
+    <!-- Demo and Plugin Stylesheets -->
+    <link rel="stylesheet" type="text/css" href="~/Content/LayoutMasterPage/demo.css" media="screen" />
+
+    <link rel="stylesheet" type="text/css" href="~/Content/plugins/colorpicker/colorpicker.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="~/Content/plugins/jimgareaselect/css/imgareaselect-default.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="~/Content/plugins/fullcalendar/fullcalendar.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="~/Content/plugins/fullcalendar/fullcalendar.print.css" media="print" />
+    <link rel="stylesheet" type="text/css" href="~/Content/plugins/tipsy/tipsy.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="~/Content/plugins/sourcerer/Sourcerer-1.2.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="~/Content/plugins/jgrowl/jquery.jgrowl.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="~/Content/plugins/spinner/spinner.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="~/Content/LayoutMasterPage/jui/jquery.ui.css" media="screen" />
+
+    <!-- Theme Stylesheet -->
+    <link rel="stylesheet" type="text/css" href="~/Content/LayoutMasterPage/mws.theme.css" media="screen" />
+
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Styles.Render("~/Content/kendo/css")
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/kendo")
+    @RenderSection("scripts", required: false)
+</head>
+<body>
+    <!-- Themer -->
+    <div id="mws-themer">
+        <div id="mws-themer-hide"></div>
+        <div id="mws-themer-content">
+            <div class="mws-themer-section">
+                <label for="mws-theme-presets">Presets</label> <select id="mws-theme-presets"></select>
+            </div>
+            <div class="mws-themer-separator"></div>
+            <div class="mws-themer-section">
+                <ul>
+                    <li><span>Base Color</span> <div id="mws-base-cp" class="mws-cp-trigger"></div></li>
+                    <li><span>Text Color</span> <div id="mws-text-cp" class="mws-cp-trigger"></div></li>
+                    <li><span>Text Glow Color</span> <div id="mws-textglow-cp" class="mws-cp-trigger"></div></li>
+                </ul>
+            </div>
+            <div class="mws-themer-separator"></div>
+            <div class="mws-themer-section">
+                <ul>
+                    <li><span>Text Glow Opacity</span> <div id="mws-textglow-op"></div></li>
+                </ul>
+            </div>
+            <div class="mws-themer-separator"></div>
+            <div class="mws-themer-section">
+                <button class="mws-button red small" id="mws-themer-getcss">Get CSS</button>
+            </div>
+        </div>
+        <div id="mws-themer-css-dialog">
+            <div class="mws-form">
+                <div class="mws-form-row" style="padding:0;">
+                    <div class="mws-form-item">
+                        <textarea cols="auto" rows="auto" readonly="readonly"></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Themer End -->
+    <!-- Header Wrapper -->
+    <div id="mws-header" class="clearfix">
+
+        <!-- Logo Wrapper -->
+        <div id="mws-logo-container">
+            <div id="mws-logo-wrap">
+                <img src="~/Content/images/mws-logo.png" alt="mws admin" />
+            </div>
+        </div>
+
+        <!-- User Area Wrapper -->
+        <div id="mws-user-tools" class="clearfix">
+
+            <!-- User Notifications -->
+            <div id="mws-user-notif" class="mws-dropdown-menu">
+                <a href="#" class="mws-i-24 i-alert-2 mws-dropdown-trigger">Notifications</a>
+                <span class="mws-dropdown-notif">35</span>
+                <div class="mws-dropdown-box">
+                    <div class="mws-dropdown-content">
+                        <ul class="mws-notifications">
+
+                            <!-- Notification Content -->
+                            <li class="read">
+                                <a href="#">
+                                    <span class="message">
+                                        Lorem ipsum dolor sit amet consectetur adipiscing elit, et al commore
+                                    </span>
+                                    <span class="time">
+                                        January 21, 2012
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="read">
+                                <a href="#">
+                                    <span class="message">
+                                        Lorem ipsum dolor sit amet
+                                    </span>
+                                    <span class="time">
+                                        January 21, 2012
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="unread">
+                                <a href="#">
+                                    <span class="message">
+                                        Lorem ipsum dolor sit amet
+                                    </span>
+                                    <span class="time">
+                                        January 21, 2012
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="unread">
+                                <a href="#">
+                                    <span class="message">
+                                        Lorem ipsum dolor sit amet
+                                    </span>
+                                    <span class="time">
+                                        January 21, 2012
+                                    </span>
+                                </a>
+                            </li>
+                            <!-- End Notification Content -->
+
+                        </ul>
+                        <div class="mws-dropdown-viewall">
+                            <a href="#">View All Notifications</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- User Messages -->
+            <div id="mws-user-message" class="mws-dropdown-menu">
+                <a href="#" class="mws-i-24 i-message mws-dropdown-trigger">Messages</a>
+                <span class="mws-dropdown-notif">35</span>
+                <div class="mws-dropdown-box">
+                    <div class="mws-dropdown-content">
+                        <ul class="mws-messages">
+
+                            <!-- Message Content -->
+                            <li class="read">
+                                <a href="#">
+                                    <span class="sender">John Doe</span>
+                                    <span class="message">
+                                        Lorem ipsum dolor sit amet consectetur adipiscing elit, et al commore
+                                    </span>
+                                    <span class="time">
+                                        January 21, 2012
+                                    </span>
+                                </a>
+                            </li>
+                            <!-- End Messages -->
+
+                        </ul>
+                        <div class="mws-dropdown-viewall">
+                            <a href="#">View All Messages</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- User Functions -->
+            <div id="mws-user-info" class="mws-inset">
+                <div id="mws-user-photo">
+                    <img src="example/profile.jpg" alt="User Photo" />
+                </div>
+                <div id="mws-user-functions">
+                    <div id="mws-username">
+                        Hello, John Doe
+                    </div>
+                    <ul>
+                        <li><a href="#">Profile</a></li>
+                        <li><a href="#">Change Password</a></li>
+                        <li><a href="index-2.html">Logout</a></li>
+                    </ul>
+                </div>
+            </div>
+            <!-- End User Functions -->
+
+        </div>
+    </div>
+
+    <!-- Main Wrapper -->
+    <div id="mws-wrapper">
+        <!-- Necessary markup, do not remove -->
+        <div id="mws-sidebar-stitch"></div>
+        <div id="mws-sidebar-bg"></div>
+
+        <!-- Sidebar Wrapper -->
+        <div id="mws-sidebar">
+
+            <!-- Search Box -->
+            <div id="mws-searchbox" class="mws-inset">
+                <form action="http://www.malijuwebshop.com/themes/mws-admin/dashboard.html">
+                    <input type="text" class="mws-search-input" />
+                    <input type="submit" class="mws-search-submit" />
+                </form>
+            </div>
+
+            <!-- Main Navigation -->
+            <div id="mws-navigation">
+                <ul>
+                    <li class="active"><a href="#" class="mws-i-24 i-home">Dashboard</a></li>
+                    <li><a href="#" class="mws-i-24 i-chart">Charts</a></li>
+                    <li><a href="#" class="mws-i-24 i-day-calendar">Calendar</a></li>
+                    <li><a href="#" class="mws-i-24 i-file-cabinet">File Manager</a></li>
+                    <li><a href="#" class="mws-i-24 i-table-1">Table</a></li>
+                    <li>
+                        <a href="#" class="mws-i-24 i-list">Forms</a>
+                        <ul>
+                            <li><a href="#">Layouts</a></li>
+                            <li><a href="#">Elements</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#" class="mws-i-24 i-cog">Widgets</a></li>
+                    <li><a href="#" class="mws-i-24 i-text-styling">Typography</a></li>
+                    <li><a href="#" class="mws-i-24 i-blocks-images">Grids &amp; Panels</a></li>
+                    <li><a href="#" class="mws-i-24 i-polaroids">Gallery</a></li>
+                    <li><a href="#" class="mws-i-24 i-alert-2">Error Page</a></li>
+                    <li>
+                        <a href="#" class="mws-i-24 i-pacman">
+                            Icons <span class="mws-nav-tooltip">2000+</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <!-- End Navigation -->
+
+        </div>
+
+
+        <!-- Container Wrapper -->
+        <div id="mws-container" class="clearfix">
+
+            <!-- Main Container -->
+            <div class="container">
+                @RenderBody()
+            </div>
+            <!-- End Main Container -->
+            <!-- Footer -->
+            <div id="mws-footer">
+                @*Copyright &copy; 2014.Company name All rights reserved.More Templates <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a> - Collect from <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a>*@
+            </div>
+            <!-- End Footer -->
+
+        </div>
+        <!-- End Container Wrapper -->
+
+    </div>
+    <!-- End Main Wrapper -->
+</body>
+</html>
