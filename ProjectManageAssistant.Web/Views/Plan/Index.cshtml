@@ -1,0 +1,31 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="header"><h3>@ViewBag.PageTitle</h3></div>
+@(
+                  Html.Kendo().TabStrip()
+                        .Name("ProjectNote")
+                        .Animation(a => a.Open(e => e.Fade(FadeDirection.In)))
+                        .Items(i =>
+                        {
+                            i.Add()
+                             .Text("计划")
+                             .Selected(true)
+                             .Content("");
+                            i.Add()
+                             .Text("未开始")
+                             .Content("");
+                            i.Add()
+                             .Text("进行中")
+                             .Content("");
+                            i.Add()
+                             .Text("已超期")
+                             .Content("");
+                            i.Add()
+                             .Text("已完成")
+                             .Content("");
+                        })
+)

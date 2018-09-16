@@ -1,4 +1,5 @@
-﻿using ProjectManageAssistant.Models.ViewModel;
+﻿using ProjectManageAssistant.Common;
+using ProjectManageAssistant.Models.ViewModel;
 using System;
 using System.Activities.Validation;
 using System.Collections.Generic;
@@ -23,7 +24,7 @@ namespace ProjectManageAssistant.IBLL
         /// <param name="errors">持久的错误信息</param>
         /// <param name="model">模型</param>
         /// <returns>是否成功</returns>
-        bool Create(ViewModelUserInfo model);
+        bool Create(ref ValidationErrors errors, ViewModelUserInfo model);
         /// <summary>
         /// 删除一个实体
         /// </summary>

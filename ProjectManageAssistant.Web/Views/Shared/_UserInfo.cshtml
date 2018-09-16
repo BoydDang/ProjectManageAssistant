@@ -1,0 +1,24 @@
+﻿@model ProjectManageAssistant.Models.ViewModel.ViewModelUserInfo
+
+<div id="branding">
+    <div class="floatleft">
+        <img src="~/Content/images/MasterLayout/logo.png" alt="Logo" />
+    </div>
+    <div class="floatright">
+        <div class="floatleft">
+            <img src="~/Content/images/MasterLayout/img-profile.jpg" alt="Profile Pic" />
+        </div>
+        <div class="floatleft marginleft10">
+            <ul class="inline-ul floatleft">
+                <li>Hello @Model.UserName</li>
+                <li>@Html.ActionLink("个人信息", "UserDetails", "Account")</li>
+                <li>@Html.ActionLink("修改密码", "ChangePassword", "Account")</li>
+                <li>@Html.ActionLink("退出登陆", "LoginOut", "Account")</li>
+            </ul>
+            <br />
+            <span class="small grey">Last Login: 3 hours ago</span>
+        </div>
+    </div>
+    <div class="clear">
+    </div>
+</div>

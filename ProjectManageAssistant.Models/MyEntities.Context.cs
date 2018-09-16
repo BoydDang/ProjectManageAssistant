@@ -26,5 +26,8 @@ namespace ProjectManageAssistant.Models
         }
     
         public virtual DbSet<UserInfo> UserInfo { get; set; }
+        public virtual DbSet<SystemMenu> SystemMenu { get; set; }
+        public virtual DbSet<SystemLog> SystemLog { get; set; }
+        public virtual DbSet<SystemException> SystemException { get; set; }
     }
 }

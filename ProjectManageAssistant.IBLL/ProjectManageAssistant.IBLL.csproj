@@ -41,6 +41,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IMenuBLL.cs" />
+    <Compile Include="ISystemExceptionBLL.cs" />
+    <Compile Include="ISystemLogBLL.cs" />
     <Compile Include="IUserBLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

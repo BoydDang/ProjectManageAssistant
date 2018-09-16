@@ -1,0 +1,38 @@
+﻿@using Kendo.Mvc.UI.Fluent
+@using ProjectManageAssistant.Models.ViewModel
+@model IEnumerable<ProjectManageAssistant.Models.ViewModel.ViewModelMenuInfo>
+
+@*<div class="box sidemenu">
+        <div class="block" id="section-menu">
+            <ul class="section menu">
+                @foreach (var m in Model)
+                {
+                <li>
+                    <a href="@m.Url" class="menuitem">@m.MenuName</a>
+                    @if (m.ChildMenuInfoList.Count > 0)
+                    {
+                        <ul class="submenu">
+                            @foreach (var c in m.ChildMenuInfoList)
+                            {
+                                <li><a href="@c.Url">@c.MenuName</a></li>
+                            }
+                        </ul>
+                    }
+                </li>
+                }
+            </ul>
+        </div>
+    </div>*@
+@(
+        @Html.Kendo().PanelBar()
+            .Name("LeftMenuPanelBar")
+            .BindTo(Model, (NavigationBindingFactory<PanelBarItem> mappings) =>
+            {
+                mappings.For<ViewModelMenuInfo>(binding => binding.ItemDataBound((item, category) =>
+                {
+                    item.Text = category.MenuName;
+                    item.Action(category.ActionName, category.ControlName, new { });
+                }).Children(menu => menu.SubMenus));
+            })
+            .ExpandMode(PanelBarExpandMode.Single)
+    )

@@ -7,46 +7,8 @@ using System.Threading.Tasks;
 
 namespace ProjectManageAssistant.IDAL
 {
-    public interface IUserRepository
+    public interface IUserRepository : ICommonRepository<UserInfo>
     {
-        /// <summary>
-        /// 获取列表
-        /// </summary>
-        /// <param name="db">数据库上下文</param>
-        /// <returns>数据列表</returns>
-        IQueryable<UserInfo> GetList(DefaultEntities db);
-        /// <summary>
-        /// 创建一个实体
-        /// </summary>
-        /// <param name="entity">实体</param>
-        int Create(UserInfo entity);
-        /// <summary>
-        /// 删除一个实体
-        /// </summary>
-        /// <param name="entity">主键ID</param>
-        int Delete(string id);
-
-        /// <summary>
-        /// 修改一个实体
-        /// </summary>
-        /// <param name="entity">实体</param>
-        int Edit(UserInfo entity);
-        /// <summary>
-        /// 获得一个实体
-        /// </summary>
-        /// <param name="id">id</param>
-        /// <returns>实体</returns>
-        UserInfo GetById(string id);
-        /// <summary>
-        /// 判断一个实体是否存在
-        /// </summary>
-        bool IsExist(string id);
-        /// <summary>
-        /// 判断一个实体是否存在
-        /// </summary>
-        /// <param name="name"></param>
-        /// <param name="password"></param>
-        /// <returns></returns>
         bool IsExist(string name, string password);
     }
 }

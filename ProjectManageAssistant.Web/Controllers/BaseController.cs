@@ -1,14 +1,13 @@
-﻿using ProjectManageAssistant.Web.Extend;
+﻿using ProjectManageAssistant.Models.ViewModel;
+using ProjectManageAssistant.Web.Extend;
 using System.Linq;
 using System.Web.Mvc;
 
 namespace ProjectManageAssistant.Web.Controllers
-{
+{   
     public class BaseController : Controller
     {
         protected override void OnActionExecuting(ActionExecutingContext filterContext)
-
-
         {
             base.OnActionExecuting(filterContext);
 
@@ -43,12 +42,21 @@ namespace ProjectManageAssistant.Web.Controllers
             if (!IsLogin() && result)
                 filterContext.Result = Redirect("/Account/Login");
         }
-
         protected bool IsLogin()
         {
             if (Session["UserInfo"] != null)
                 return true;
             return false;
+        }
+
+        protected override void OnActionExecuted(ActionExecutedContext filterContext)
+        {
+            base.OnActionExecuted(filterContext);
+
+            if (filterContext.HttpContext.Session["UserInfo"] != null)
+            {
+                ViewBag.UserInfo = filterContext.HttpContext.Session["UserInfo"] as ViewModelUserInfo;
+            }
         }
     }
 }

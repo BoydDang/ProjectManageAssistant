@@ -1,0 +1,58 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="header"><h3>@ViewBag.PageTitle</h3></div>
+@*@(
+            Html.Kendo().Grid<ProjectManageAssistant.Models.ViewModel.ViewModelUserInfo>()
+              .Name("UserGrid")
+              .HtmlAttributes(new { style = "height: 650px;" })
+              .Columns(columns =>
+              {
+                  columns.Bound(p => p.UserName).Width(200);
+                  columns.Bound(p => p.UserPassword).Width(200);
+                  columns.Bound(p => p.RememberMe).Width(200);
+                  columns.Command(command => command.Destroy()).Width(110);
+              })
+              .ToolBar(toolbar =>
+              {
+                  toolbar.Create();
+                  toolbar.Save();
+              })
+              .Editable(editable =>
+                  editable.Mode(GridEditMode.InCell)
+              )
+              .Pageable()
+              .Navigatable()
+              .Sortable()
+              .Scrollable()
+              .DataSource(dataSource => dataSource
+                    .Ajax()
+                    .Batch(true)
+                    .ServerOperation(false)
+                    .Events(events => events.Error("error_handler"))
+                    .Model(model => model.Id(c => c.UserID))
+                    .Read(read => read.Action("ReadUser", "User"))
+                    .Update(update => update.Action("UpdateUser", "User"))
+                    .Create(create => create.Action("CreateUser", "User"))
+                    .Destroy(destroy => destroy.Action("DestroyUser", "User"))
+                    .PageSize(20)
+              )
+)
+
+@section Scripts {
+    <script type="text/javascript">
+    function error_handler(e) {
+        if (e.errors) {
+            var message = "Errors:\n";
+            $.each(e.errors, function (key, value) {
+                if ('errors' in value) {
+                    $.each(value.errors, function() {
+                        message += this + "\n";
+                    });
+                }
+            });
+            alert(message);
+        }
+    }
+    </script>
+}*@

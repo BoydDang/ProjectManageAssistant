@@ -1,0 +1,25 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="header"><h3>@ViewBag.PageTitle</h3></div>
+@(
+  Html.Kendo().TabStrip()
+        .Name("ProjectNote")
+        .Animation(a=>a.Open(e=>e.Fade(FadeDirection.In)))
+        .Items(i=> {
+            i.Add()
+             .Text("施工日志")
+             .Selected(true)
+             .Content("");
+            i.Add()
+             .Text("安全检查")
+             .Content("");
+            i.Add()
+             .Text("质量检查")
+             .Content("");
+            i.Add()
+             .Text("项目日报")
+             .Content("");
+        })
+)

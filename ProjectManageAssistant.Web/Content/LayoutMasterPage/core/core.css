@@ -355,7 +355,7 @@ div#mws-sidebar
 {
 	width:200px;
 	padding-right:6px;
-	padding-top:72px;
+	padding-top:12px;
 	float:left;
 	z-index:1;
 	position:relative;
@@ -381,7 +381,7 @@ div#mws-sidebar-bg
 	left:0;
 	z-index:0;
 	width:200px;
-	background:url(../../images/core/mws-sidebar-bg.png);
+	/*background:url(../../images/core/mws-sidebar-bg.png);*/
 }
 
 /* Search Box */
@@ -529,7 +529,7 @@ div#mws-navigation ul li ul li:hover
 div#mws-container
 {
 	margin-left:206px;
-	padding-top:100px;
+	padding-top:20px;
 	min-height:100%;
 }
 

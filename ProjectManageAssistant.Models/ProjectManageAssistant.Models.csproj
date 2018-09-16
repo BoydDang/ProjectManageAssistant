@@ -65,9 +65,21 @@
       <DependentUpon>MyEntities.edmx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SystemException.cs">
+      <DependentUpon>MyEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SystemLog.cs">
+      <DependentUpon>MyEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SystemMenu.cs">
+      <DependentUpon>MyEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="UserInfo.cs">
       <DependentUpon>MyEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="ViewModel\ViewModelMenuInfo.cs" />
+    <Compile Include="ViewModel\ViewModelSystemException.cs" />
+    <Compile Include="ViewModel\ViewModelSytemLog.cs" />
     <Compile Include="ViewModel\ViewModelUserInfo.cs" />
   </ItemGroup>
   <ItemGroup>

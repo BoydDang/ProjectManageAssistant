@@ -40,6 +40,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ICommonRepository.cs" />
+    <Compile Include="IMenuRepository.cs" />
+    <Compile Include="ISystemExceptionRepository.cs" />
+    <Compile Include="ISystemLogRepository.cs" />
     <Compile Include="IUserRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -1,274 +1,479 @@
-﻿<!DOCTYPE html>
+﻿@{ 
+    var VUserInfoModel = (ProjectManageAssistant.Models.ViewModel.ViewModelUserInfo)ViewBag.UserInfo;
+}
+<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title</title>
-    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
-    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>Dashboard | BlueWhale Admin</title>
+    <style type="text/css">
+        /*reset*/
+        html, body, div, span, applet, object, iframe,
+        h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+        a, abbr, acronym, address, big, cite, code,
+        del, dfn, em, font, img, ins, kbd, q, s, samp,
+        small, strike, strong, sub, sup, tt, var,
+        b, u, i, center,
+        dl, dt, dd, ol, ul, li,
+        fieldset, form, label, legend,
+        table, caption, tbody, tfoot, thead, tr, th, td {
+            margin: 0;
+            padding: 0;
+            border: 0;
+            outline: 0;
+            font-size: 100%;
+            vertical-align: baseline;
+            background: transparent;
+        }
 
-    <!-- Required Stylesheets -->
-    <link rel="stylesheet" type="text/css" href="~/Content/LayoutMasterPage/reset.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="~/Content/LayoutMasterPage/text.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="~/Content/LayoutMasterPage/fonts/ptsans/stylesheet.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="~/Content/LayoutMasterPage/fluid.css" media="screen" />
+        body {
+            line-height: 1;
+        }
+        /*text*/
+        body {
+            font: 13px/1.5 Tahoma, Helvetica, Arial, 'Liberation Sans', FreeSans, sans-serif;
+        }
 
-    <link rel="stylesheet" type="text/css" href="~/Content/LayoutMasterPage/mws.style.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="~/Content/LayoutMasterPage/icons/icons.css" media="screen" />
+        ul {
+            list-style: square;
+        }
+        /*grid*/
+        .container_12,
+        .container_16 {
+            width: 100%;
+        }
 
-    <!-- Demo and Plugin Stylesheets -->
-    <link rel="stylesheet" type="text/css" href="~/Content/LayoutMasterPage/demo.css" media="screen" />
+            .container_12 .grid_12, .container_16 .grid_16 {
+                width: 98%;
+            }
 
-    <link rel="stylesheet" type="text/css" href="~/Content/plugins/colorpicker/colorpicker.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="~/Content/plugins/jimgareaselect/css/imgareaselect-default.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="~/Content/plugins/fullcalendar/fullcalendar.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="~/Content/plugins/fullcalendar/fullcalendar.print.css" media="print" />
-    <link rel="stylesheet" type="text/css" href="~/Content/plugins/tipsy/tipsy.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="~/Content/plugins/sourcerer/Sourcerer-1.2.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="~/Content/plugins/jgrowl/jquery.jgrowl.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="~/Content/plugins/spinner/spinner.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="~/Content/LayoutMasterPage/jui/jquery.ui.css" media="screen" />
+            .container_12 .grid_10 {
+                width: 81.333%;
+            }
 
-    <!-- Theme Stylesheet -->
-    <link rel="stylesheet" type="text/css" href="~/Content/LayoutMasterPage/mws.theme.css" media="screen" />
+        .grid_1,
+        .grid_2,
+        .grid_3,
+        .grid_4,
+        .grid_5,
+        .grid_6,
+        .grid_7,
+        .grid_8,
+        .grid_9,
+        .grid_10,
+        .grid_11,
+        .grid_12,
+        .grid_13,
+        .grid_14,
+        .grid_15,
+        .grid_16 {
+            display: inline;
+            float: left;
+            margin-left: 1%;
+            margin-right: 1%;
+        }
 
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
+        html body * span.clear,
+        html body * div.clear,
+        html body * li.clear,
+        html body * dd.clear {
+            background: none;
+            border: 0;
+            clear: both;
+            display: block;
+            float: none;
+            font-size: 0;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            visibility: hidden;
+            width: 0;
+            height: 0;
+        }
+
+        .container_12 .grid_2 {
+            width: 14.666%;
+        }
+        /*layout*/
+        body {
+            background: #fff;
+            color: #333;
+            font-size: 11px;
+            padding: 0 0 0px;
+        }
+
+        .container_12,
+        .container_16 {
+            background: #2E5E79;
+        }
+
+        .header-repeat {
+            background: url(../../Content/images/MasterLayout/header-repeat.jpg) repeat-x;
+        }
+
+        #branding {
+            font-weight: normal;
+            text-align: left;
+            padding: 2em 1em 1.6em 1em;
+            margin-bottom: 0;
+        }
+
+        .floatleft {
+            float: left;
+        }
+
+        .floatright {
+            float: right;
+        }
+
+        .marginleft10 {
+            margin-left: 10px;
+        }
+
+        #branding ul, #branding ul li {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        #branding li {
+            padding: 0px 0px 0px 0px !important;
+        }
+
+        .inline-ul li {
+            display: inline;
+            color: #fff;
+        }
+
+        a {
+            color: #000;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        #branding a {
+            color: #A1EAFF;
+            font-weight: normal;
+        }
+
+            #branding a:before {
+                content: " | ";
+                color: #fff;
+            }
+
+        .grey {
+            color: #C2C2C2;
+        }
+
+        .small {
+            font-size: 9px;
+        }
+
+        a {
+            color: #000;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        ul, ol {
+            padding-top: 0;
+        }
+
+            ul.menu {
+                list-style: none;
+                border-top: 1px solid #bbb;
+            }
+
+                ul.menu ul {
+                    list-style: none;
+                    margin: 0;
+                }
+
+                ul.menu li {
+                    margin: 0;
+                }
+
+                    ul.menu li a {
+                        display: block;
+                        padding: 4px 10px;
+                        border-bottom: 1px solid #ccc;
+                    }
+
+                ul.menu ul li a {
+                    padding-left: 30px;
+                }
+
+            ul.section {
+                border-top: 0;
+                margin-bottom: 0;
+            }
+
+                ul.section ul li {
+                    text-transform: none;
+                }
+
+                ul.section li a {
+                    background: url(../../Content/images/MasterLayout/sidemenu-repeat.jpg) repeat-x;
+                    line-height: 26px;
+                }
+
+                    ul.section li a.current {
+                        color: #1B548D;
+                        background: url(../../Content/images/MasterLayout/sidemenu-repeat-hover.jpg) repeat-x;
+                    }
+
+                ul.section ul.current li a {
+                    background: #eee;
+                    border-bottom: 1px solid #fff;
+                }
+
+        #site_info {
+            color: #fff;
+            background: #204562;
+            border-top: 1px solid #1d3b53;
+            padding-left: 20px;
+        }
+        /*nav*/
+        ul.nav, ul.nav * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul.nav {
+            position: relative;
+            background: url(../../Content/images/MasterLayout/nav-repeat2.jpg) repeat-x !important;
+            max-width: 100%;
+            height: 3.7em;
+        }
+
+            ul.nav li ul li {
+                padding: 0;
+                border: none;
+                width: auto;
+                max-width: none;
+            }
+
+            ul.nav li ul {
+                cursor: default;
+                width: 100%;
+                max-width: 100%;
+                position: absolute;
+                height: auto;
+                top: 3.4em;
+                background-position: 0 0 !important;
+                left: -9000px;
+            }
+
+                ul.nav li ul li a {
+                    position: relative !important;
+                    cursor: pointer !important;
+                    white-space: nowrap;
+                    line-height: 2.5em;
+                    height: 2.5em;
+                    font-weight: normal;
+                    color: #666;
+                    background-position: 0 50% !important;
+                }
+
+        ul.main li a {
+            height: 3.7em;
+            line-height: 3.7em;
+            border: 0;
+            color: #fff;
+        }
+
+        ul.nav li a {
+            color: #fff;
+            font-weight: bold;
+            text-decoration: none;
+            display: block;
+            float: left;
+            padding: 0 1em;
+            height: 3.7em;
+            line-height: 3.7em;
+        }
+
+        ul.main li ul {
+            border-top: 0;
+        }
+
+            ul.main li ul li {
+                float: left;
+            }
+
+        ul.nav li {
+            cursor: pointer;
+            float: left;
+            text-align: center;
+            list-style-type: none;
+            font-weight: normal;
+            vertical-align: middle;
+        }
+
+        ul.main li ul li a {
+            width: 12em;
+            line-height: 3em;
+            height: 3em;
+            text-align: left;
+            color: #fff;
+            border-top: 1px solid #1A3A52;
+            background: #103D5F;
+        }
+
+        ul.main li {
+            position: relative;
+            top: 0;
+            left: 0;
+        }
+
+        ul.nav li.ic-dashboard a span, .ic-dashboard {
+            background: url(../../Content/images/MasterLayout/icon-dashboard.png) no-repeat center left;
+        }
+
+        ul.nav li {
+            background-image: none !important;
+        }
+
+        .box {
+            background: #fff;
+            margin-bottom: 20px;
+            padding: 10px 10px 10px 10px;
+            margin-left: -8px;
+        }
+
+            .box.sidemenu {
+                background-color: #D1DEE4;
+                border-right: 1px solid #3A5665;
+                padding: 0px;
+                margin: 0px;
+                cursor: pointer;
+                height: 100%;
+            }
+
+                .box.sidemenu .block {
+                    padding-top: 0px;
+                    margin-top: 0px;
+                }
+
+        .block {
+            padding-bottom: 1px;
+        }
+
+
+
+        .header {
+            position: relative;
+            font: 400 16px Arial, Helvetica, sans-serif;
+            color: #555555;
+        }
+            .header:before {
+                content: "";
+                display: block;
+                position: absolute;
+                left: 80px;
+                right: 0;
+                bottom: 8px;
+                border-top: 1px solid #e8ecef;
+                border-color: #888888;
+            }
+        h3 {
+            color: #e8ecef;
+            display: inline-block;
+            position: relative;
+            margin: 0;
+            padding: 10px 10px 0 0;
+            font: 18px MetricLight;
+            text-transform: uppercase;
+        }
+    </style>
+
+    @*@Styles.Render("~/Content/css")*@
+    @*@Scripts.Render("~/bundles/modernizr")*@
     @Styles.Render("~/Content/kendo/css")
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
+    @*@Scripts.Render("~/bundles/jquery")*@
+    @*@Scripts.Render("~/bundles/bootstrap")*@
+
+
+    @Scripts.Render("~/bundles/jquery-ui")
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            //$("#section-menu")  
+            //    .accordion({
+            //        "header": "a.menuitem"
+            //    })
+            //    .bind("accordionchangestart", function (e, data) {
+            //        data.newHeader.next().andSelf().addClass("current");
+            //        data.oldHeader.next().andSelf().removeClass("current");
+            //    })
+            //    .find("a.menuitem:first").addClass("current")
+            //    .next().addClass("current");
+            //$('#section-menu .submenu').css('height', 'auto');
+
+            var height = $(document).height();
+            $('.grid_12').each(function () {
+                height -= $(this).outerHeight();
+            });
+            height -= $('#site_info').outerHeight();
+            height -= 1;
+            //salert(height);
+            $('.sidemenu').css('height', height);
+        });
+    </script>
     @Scripts.Render("~/bundles/kendo")
     @RenderSection("scripts", required: false)
 </head>
 <body>
-    <!-- Themer -->
-    <div id="mws-themer">
-        <div id="mws-themer-hide"></div>
-        <div id="mws-themer-content">
-            <div class="mws-themer-section">
-                <label for="mws-theme-presets">Presets</label> <select id="mws-theme-presets"></select>
-            </div>
-            <div class="mws-themer-separator"></div>
-            <div class="mws-themer-section">
-                <ul>
-                    <li><span>Base Color</span> <div id="mws-base-cp" class="mws-cp-trigger"></div></li>
-                    <li><span>Text Color</span> <div id="mws-text-cp" class="mws-cp-trigger"></div></li>
-                    <li><span>Text Glow Color</span> <div id="mws-textglow-cp" class="mws-cp-trigger"></div></li>
-                </ul>
-            </div>
-            <div class="mws-themer-separator"></div>
-            <div class="mws-themer-section">
-                <ul>
-                    <li><span>Text Glow Opacity</span> <div id="mws-textglow-op"></div></li>
-                </ul>
-            </div>
-            <div class="mws-themer-separator"></div>
-            <div class="mws-themer-section">
-                <button class="mws-button red small" id="mws-themer-getcss">Get CSS</button>
-            </div>
+    <div class="container_12">
+        <div class="grid_12 header-repeat">
+            @Html.Partial("_UserInfo", VUserInfoModel)
         </div>
-        <div id="mws-themer-css-dialog">
-            <div class="mws-form">
-                <div class="mws-form-row" style="padding:0;">
-                    <div class="mws-form-item">
-                        <textarea cols="auto" rows="auto" readonly="readonly"></textarea>
-                    </div>
-                </div>
-            </div>
+        <div class="clear">
         </div>
-    </div>
-    <!-- Themer End -->
-    <!-- Header Wrapper -->
-    <div id="mws-header" class="clearfix">
-
-        <!-- Logo Wrapper -->
-        <div id="mws-logo-container">
-            <div id="mws-logo-wrap">
-                <img src="~/Content/images/mws-logo.png" alt="mws admin" />
-            </div>
-        </div>
-
-        <!-- User Area Wrapper -->
-        <div id="mws-user-tools" class="clearfix">
-
-            <!-- User Notifications -->
-            <div id="mws-user-notif" class="mws-dropdown-menu">
-                <a href="#" class="mws-i-24 i-alert-2 mws-dropdown-trigger">Notifications</a>
-                <span class="mws-dropdown-notif">35</span>
-                <div class="mws-dropdown-box">
-                    <div class="mws-dropdown-content">
-                        <ul class="mws-notifications">
-
-                            <!-- Notification Content -->
-                            <li class="read">
-                                <a href="#">
-                                    <span class="message">
-                                        Lorem ipsum dolor sit amet consectetur adipiscing elit, et al commore
-                                    </span>
-                                    <span class="time">
-                                        January 21, 2012
-                                    </span>
-                                </a>
-                            </li>
-                            <li class="read">
-                                <a href="#">
-                                    <span class="message">
-                                        Lorem ipsum dolor sit amet
-                                    </span>
-                                    <span class="time">
-                                        January 21, 2012
-                                    </span>
-                                </a>
-                            </li>
-                            <li class="unread">
-                                <a href="#">
-                                    <span class="message">
-                                        Lorem ipsum dolor sit amet
-                                    </span>
-                                    <span class="time">
-                                        January 21, 2012
-                                    </span>
-                                </a>
-                            </li>
-                            <li class="unread">
-                                <a href="#">
-                                    <span class="message">
-                                        Lorem ipsum dolor sit amet
-                                    </span>
-                                    <span class="time">
-                                        January 21, 2012
-                                    </span>
-                                </a>
-                            </li>
-                            <!-- End Notification Content -->
-
-                        </ul>
-                        <div class="mws-dropdown-viewall">
-                            <a href="#">View All Notifications</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- User Messages -->
-            <div id="mws-user-message" class="mws-dropdown-menu">
-                <a href="#" class="mws-i-24 i-message mws-dropdown-trigger">Messages</a>
-                <span class="mws-dropdown-notif">35</span>
-                <div class="mws-dropdown-box">
-                    <div class="mws-dropdown-content">
-                        <ul class="mws-messages">
-
-                            <!-- Message Content -->
-                            <li class="read">
-                                <a href="#">
-                                    <span class="sender">John Doe</span>
-                                    <span class="message">
-                                        Lorem ipsum dolor sit amet consectetur adipiscing elit, et al commore
-                                    </span>
-                                    <span class="time">
-                                        January 21, 2012
-                                    </span>
-                                </a>
-                            </li>
-                            <!-- End Messages -->
-
-                        </ul>
-                        <div class="mws-dropdown-viewall">
-                            <a href="#">View All Messages</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- User Functions -->
-            <div id="mws-user-info" class="mws-inset">
-                <div id="mws-user-photo">
-                    <img src="example/profile.jpg" alt="User Photo" />
-                </div>
-                <div id="mws-user-functions">
-                    <div id="mws-username">
-                        Hello, John Doe
-                    </div>
+        <div class="grid_12">
+            <ul class="nav main">
+                <li class="ic-dashboard"><a href="dashboard.html"><span>Dashboard</span></a> </li>
+                <li class="ic-form-style"><a href="javascript:"><span>Controls</span></a>
                     <ul>
-                        <li><a href="#">Profile</a></li>
-                        <li><a href="#">Change Password</a></li>
-                        <li><a href="index-2.html">Logout</a></li>
+                        <li><a href="form-controls.html">Forms</a> </li>
+                        <li><a href="buttons.html">Buttons</a> </li>
+                        <li><a href="form-controls.html">Full Page Example</a> </li>
+                        <li><a href="table.html">Page with Sidebar Example</a> </li>
                     </ul>
-                </div>
-            </div>
-            <!-- End User Functions -->
+                </li>
+                <li class="ic-typography"><a href="typography.html"><span>Typography</span></a></li>
+				<li class="ic-charts"><a href="charts.html"><span>Charts & Graphs</span></a></li>
+                <li class="ic-grid-tables"><a href="table.html"><span>Data Table</span></a></li>
+                <li class="ic-gallery dd"><a href="javascript:"><span>Image Galleries</span></a>
+               		 <ul>
+                        <li><a href="image-gallery.html">Pretty Photo</a> </li>
+                        <li><a href="gallery-with-filter.html">Gallery with Filter</a> </li>
+                    </ul>
+                </li>
+                <li class="ic-notifications"><a href="notifications.html"><span>Notifications</span></a></li>
 
+            </ul>
         </div>
+        <div class="clear">
+        </div>
+        <div class="grid_2">
+            <div class="box sidemenu">
+                @Html.Action("MenuList", "Menu")
+            </div>
+        </div>
+        <div class="grid_10">
+            @RenderBody()
+        </div>
+        <div class="clear">
+        </div>
+        </div>
+    <div class="clear">
     </div>
-
-    <!-- Main Wrapper -->
-    <div id="mws-wrapper">
-        <!-- Necessary markup, do not remove -->
-        <div id="mws-sidebar-stitch"></div>
-        <div id="mws-sidebar-bg"></div>
-
-        <!-- Sidebar Wrapper -->
-        <div id="mws-sidebar">
-
-            <!-- Search Box -->
-            <div id="mws-searchbox" class="mws-inset">
-                <form action="http://www.malijuwebshop.com/themes/mws-admin/dashboard.html">
-                    <input type="text" class="mws-search-input" />
-                    <input type="submit" class="mws-search-submit" />
-                </form>
-            </div>
-
-            <!-- Main Navigation -->
-            <div id="mws-navigation">
-                <ul>
-                    <li class="active"><a href="#" class="mws-i-24 i-home">Dashboard</a></li>
-                    <li><a href="#" class="mws-i-24 i-chart">Charts</a></li>
-                    <li><a href="#" class="mws-i-24 i-day-calendar">Calendar</a></li>
-                    <li><a href="#" class="mws-i-24 i-file-cabinet">File Manager</a></li>
-                    <li><a href="#" class="mws-i-24 i-table-1">Table</a></li>
-                    <li>
-                        <a href="#" class="mws-i-24 i-list">Forms</a>
-                        <ul>
-                            <li><a href="#">Layouts</a></li>
-                            <li><a href="#">Elements</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#" class="mws-i-24 i-cog">Widgets</a></li>
-                    <li><a href="#" class="mws-i-24 i-text-styling">Typography</a></li>
-                    <li><a href="#" class="mws-i-24 i-blocks-images">Grids &amp; Panels</a></li>
-                    <li><a href="#" class="mws-i-24 i-polaroids">Gallery</a></li>
-                    <li><a href="#" class="mws-i-24 i-alert-2">Error Page</a></li>
-                    <li>
-                        <a href="#" class="mws-i-24 i-pacman">
-                            Icons <span class="mws-nav-tooltip">2000+</span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-            <!-- End Navigation -->
-
-        </div>
-
-
-        <!-- Container Wrapper -->
-        <div id="mws-container" class="clearfix">
-
-            <!-- Main Container -->
-            <div class="container">
-                @RenderBody()
-            </div>
-            <!-- End Main Container -->
-            <!-- Footer -->
-            <div id="mws-footer">
-                @*Copyright &copy; 2014.Company name All rights reserved.More Templates <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a> - Collect from <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a>*@
-            </div>
-            <!-- End Footer -->
-
-        </div>
-        <!-- End Container Wrapper -->
-
+    <div id="site_info">
+        <p>
+            Copyright <a href="#">BlueWhale Admin</a>. All Rights Reserved.More Templates <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a> - Collect from <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a>
+        </p>
     </div>
-    <!-- End Main Wrapper -->
 </body>
 </html>

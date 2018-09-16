@@ -1,4 +1,6 @@
-﻿using ProjectManageAssistant.IBLL;
+﻿using ProjectManageAssistant.BLL.Core;
+using ProjectManageAssistant.Common;
+using ProjectManageAssistant.IBLL;
 using ProjectManageAssistant.IDAL;
 using ProjectManageAssistant.Models;
 using ProjectManageAssistant.Models.ViewModel;
@@ -23,7 +25,7 @@ namespace ProjectManageAssistant.BLL
         public List<ViewModelUserInfo> GetList(string queryStr)
         {
 
-            IQueryable<UserInfo> queryData = Rep.GetList(db);
+            IQueryable<UserInfo> queryData = Rep.GetList();
 
 
             return CreateModelList(ref queryData);
@@ -49,13 +51,14 @@ namespace ProjectManageAssistant.BLL
         /// <param name="errors">持久的错误信息</param>
         /// <param name="model">模型</param>
         /// <returns>是否成功</returns>
-        public bool Create(ViewModelUserInfo model)
+        public bool Create(ref ValidationErrors errors, ViewModelUserInfo model)
         {
             try
             {
                 UserInfo entity = Rep.GetById(model.UserID.ToString());
                 if (entity != null)
                 {
+                    errors.Add("用户信息重复");
                     return false;
                 }
                 entity = new UserInfo();
@@ -64,18 +67,20 @@ namespace ProjectManageAssistant.BLL
                 entity.UserPassword = model.UserPassword;
                 entity.RememberMe = model.RememberMe;
 
-                if (Rep.Create(entity) == 1)
+                if (Rep.Create(entity))
                 {
                     return true;
                 }
                 else
                 {
+                    errors.Add("新增用户失败");
                     return false;
                 }
             }
             catch (Exception ex)
             {
-                //ExceptionHander.WriteException(ex);
+                errors.Add(ex.Message);
+                ExceptionHander.WriteException(ex);
                 return false;
             }
         }
@@ -125,7 +130,7 @@ namespace ProjectManageAssistant.BLL
                 entity.RememberMe = model.RememberMe;
 
 
-                if (Rep.Edit(entity) == 1)
+                if (Rep.Edit(entity))
                 {
                     return true;
                 }

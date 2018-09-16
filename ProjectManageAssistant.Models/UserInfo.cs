@@ -18,5 +18,6 @@ namespace ProjectManageAssistant.Models
         public string UserName { get; set; }
         public string UserPassword { get; set; }
         public bool RememberMe { get; set; }
+        public string UserImage { get; set; }
     }
 }

@@ -1,0 +1,25 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="header"><h3>@ViewBag.PageTitle</h3></div>
+@(
+                      Html.Kendo().TabStrip()
+                            .Name("ProjectNote")
+                            .Animation(a => a.Open(e => e.Fade(FadeDirection.In)))
+                            .Items(i =>
+                            {
+                                i.Add()
+                                 .Text("支出模式")
+                                 .Selected(true)
+                                 .Content("");
+                                i.Add()
+                                 .Text("人材机模式")
+                                 .Content("");
+                                i.Add()
+                                 .Text("清单模式")
+                                 .Content("");
+                            })
+)
+
